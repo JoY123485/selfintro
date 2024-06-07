@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>contact</title>
+</head>
+<style>
+    @font-face {
+        font-family: 'intelone-mono-font-family-regular';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/intelone-mono-font-family-regular.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+    }
+    body {
+        background-color: #f1e5d4;
+    }
+    .list {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin: auto;
+        margin-top: 20vb;
+        width: 1067px; 
+        height: 600px;
+    }
+    .menu * {
+        display: inline;
+    }
+
+    .menu li {
+        margin: 35px;
+    }
+
+    .menu li a {
+        font-family: 'intelone-mono-font-family-regular';
+        color: burlywood;
+        text-decoration-line: none;
+    }
+
+    .menu ul {
+        padding-left: 0px;
+    }
+
+    .menu {
+        font-size: 24px;
+        font-weight: bold;
+        align-items: center;
+        text-align: center;
+        padding-top: 80px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        z-index: 1;
+        text-shadow: -0.25px 0px black, 0px 0.25px black, 0.25px 0px black, 0px -0.25px black;
+    }
+    #main{
+        background-color: white;
+        border-radius: 30px;
+        display: flex;
+        align-content: center;
+        margin: auto;
+        margin-top: 20vb;
+        width: 1067px;
+    }
+    .gform{
+        font-family: 'intelone-mono-font-family-regular';
+        padding-top: 100px;
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-bottom: 100px;
+        width: 100%;
+        height: 100%;
+   }
+</style>
+<body>
+    <header id = "header"> 
+        <nav class ="menu">
+            <ul>
+               <li><a href = "index.html">Home</a></li>
+               <li><a href = "about.html">About</a></li>
+               <li><a href = "interest.html">Interest</a></li>
+               <li><a href = "futurePlan.html">Future Plan</a></li>
+               <li><a href = "contect.html">Contect</a></li>
+            </ul>
+        </nav>
+    </header> 
+    <div id="main">
+        <form id="emailForm" class="gform" method="POST" data-email="jyn3672@gmail.com" action="https://script.google.com/macros/s/AKfycbydFu3IaC4ttqFJsLMZR-PQRi2qurG_vsROqId4aLSHvVtMb1ZV4C0z3JUwOAqLH2blaA/exec
+        ">
+            <div>
+               name: <input type="text" id="name" name="name" style="border-width: 0 0 1px; width: 200px; outline: none;" required>
+               &nbsp; e-mail: <input type="text" id="eEmail" name="email" style="border-width: 0 0 1px; width: 491px; outline: none;" required>
+               <br>
+               <br>    
+               message:
+               <textarea class="form-control" id="message" name="message" rows="5" style="width: 100%; height: 200px; resize: vertical; border: none; outline: none; background-color: #ececb7; border-radius: 10px;" required></textarea> 
+               <br>
+               <button type="submit" class="btn-send">Send Message</button>
+            </div>
+        </form>
+      </div>
+      <script data-cfasync="false" type="text/javascript" src="form-submission-handler.js"></script>
+</body>
+</html>

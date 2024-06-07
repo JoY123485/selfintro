@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인화면</title>
+    <link rel = "stylesheet" href = "./css/main.css">
+    <link rel = "stylesheet" href = "./css/about.css">
+    <style>
+        @font-face {
+            font-family: 'intelone-mono-font-family-regular';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/intelone-mono-font-family-regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        body {
+            background-color: #f1e5d4;
+        }
+
+        .list {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            margin: auto;
+            margin-top: 20vb;
+            width: 1067px; 
+            height: 600px;
+        }
+        .menu * {
+            display: inline;
+        }
+
+        .menu li {
+            margin: 35px;
+        }
+
+        .menu li a {
+            font-family: 'intelone-mono-font-family-regular';
+            color: burlywood;
+            text-decoration-line: none;
+        }
+
+        .menu ul {
+            padding-left: 0px;
+        }
+
+        .menu {
+            font-size: 24px;
+            font-weight: bold;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            z-index: 2;
+            text-shadow: -0.25px 0px black, 0px 0.25px black, 0.25px 0px black, 0px -0.25px black;
+        }
+        .canvas{
+            position: absolute;
+        }
+        .main_image_text {
+            font-family: 'intelone-mono-font-family-regular';
+            position: static;
+            margin-top:35%;
+            margin-left: 36%;
+            transform: translate( -50%, -50% );
+            color: white;
+        }
+
+        .intr{
+            font-family: 'intelone-mono-font-family-regular';
+            position:static;
+            margin-top: -20%;
+            margin-left: 4%;
+            color: white;
+        }
+
+        .rectangle {
+            z-index: 1;
+            width: 380px;
+            height: 600px;
+            position:absolute;
+            margin-left: -25%;
+            background-color: burlywood;
+        }
+        .color-btn {
+            width: 30px;
+            height: 30px;
+            border: 0;
+            border-radius: 50%;
+        }
+        .color-btn[data-color='red'] { background: red; }
+        .color-btn[data-color='green'] { background: green; }
+        .color-btn[data-color='blue'] { background: blue; }
+        .image-btn {
+            width: 40px;
+            height: 40px;
+        }
+        .clock{
+            position: static;
+        }
+        #time{
+            font-family: 'intelone-mono-font-family-regular';
+            color:white;
+            font-size: 20pt;
+            margin-left: 4%;
+        }
+    </style>
+</head>
+<div id="container">
+<body>
+    <header id = "header"> 
+        <nav class ="menu">
+            <ul>
+                <li><a href = "index.html">Home</a></li>
+                <li><a href = "about.html">About</a></li>
+                <li><a href = "interest.html">Interest</a></li>
+                <li><a href = "futurePlan.html">Future Plan</a></li>
+                <li><a href = "contect.html">Contect</a></li>
+            </ul>
+        </nav>
+    </header> 
+    <div class="list">
+        <br>
+        <div class="main_image">
+            <img src ="배경.png" alt="" width="1067px;" height="600px" >
+        </div>
+        <canvas class="canvas" width="1067" height="600px"></canvas>
+        <div class="rectangle">
+            <h3 class="main_image_text" style="font-size:36px">Hello! <br>I'm JO YENA<hr></h3>
+            <p class="intr">This is my self-introduce page.<br>If you want to know more about me,<br>click the menu.</p>
+            <div class="clock">
+                <p id="time"></p>
+            </div>
+        </div>
+        <div class="control">
+            <button class="color-btn" data-type="color" data-color="red"></button>
+            <br>
+            <button class="color-btn" data-type="color" data-color="green"></button>
+            <br>
+            <button class="color-btn" data-type="color" data-color="blue"></button>
+        </div>
+        <div class="clock">
+            <p id="time"></p>
+        </div>
+    </div>
+    <script>
+        const canvas = document.querySelector('.canvas');
+        const context = canvas.getContext('2d');
+        const control = document.querySelector('.control');
+        const saveBtn = document.querySelector('.save-btn');
+        const resultImage = document.querySelector('.result-image');
+        let drawingMode;
+        let brush = 'color';
+        let colorVal = 'red';
+
+        const imgElem = new Image();
+        imgElem.src = '../images/ilbuni2.png';
+
+        function downHandler() {
+         drawingMode = true;
+         }
+
+          function upHandler() {
+            drawingMode = false;
+         }
+
+        function moveHandler(이벤트) {
+            if (!drawingMode) return;
+
+            switch (brush) {
+            case 'color':
+                context.beginPath();
+                context.arc(이벤트.layerX, 이벤트.layerY, 10, 0, Math.PI*2, false);
+                context.fill();
+                break;
+            case 'image':
+                context.drawImage(imgElem, 이벤트.layerX, 이벤트.layerY, 50, 50);
+                break;
+            }
+        }
+
+        function setColor(이벤트) {
+            brush = 이벤트.target.getAttribute('data-type');
+            colorVal = 이벤트.target.getAttribute('data-color');
+            context.fillStyle = colorVal;
+            console.log(brush);
+        }
+
+        function createImage(){
+            const url = Canvas.toDataURL('image/png');
+            console.log(url);
+            const imgElem = new Image();
+            imgElem.src = url;
+            resultImage.appendChild(imgElem);
+        }
+
+      canvas.addEventListener('mousedown', downHandler);
+      canvas.addEventListener('mousemove', moveHandler);
+      canvas.addEventListener('mouseup', upHandler);
+      control.addEventListener('click', setColor);
+
+      const time = document.getElementById('time');
+      setInterval(() => {
+        const date = new Date();
+        time.innerHTML = date.toLocaleTimeString();
+    }, 1000);
+    </script>
+</body>
+</html>

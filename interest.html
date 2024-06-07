@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>관심기술</title>
+</head>
+<style>
+    @font-face {
+        font-family: 'intelone-mono-font-family-regular';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/intelone-mono-font-family-regular.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+    }
+    body {
+        background-color: #f1e5d4;
+    }
+    .list {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin: auto;
+        margin-top: 20vb;
+        width: 1067px; 
+        height: 600px;
+    }
+    .menu * {
+        display: inline;
+    }
+
+    .menu li {
+        margin: 35px;
+    }
+
+    .menu li a {
+        font-family: 'intelone-mono-font-family-regular';
+        color: burlywood;
+        text-decoration-line: none;
+    }
+
+    .menu ul {
+        padding-left: 0px;
+    }
+
+    .menu {
+        font-size: 24px;
+        font-weight: bold;
+        align-items: center;
+        text-align: center;
+        padding-top: 80px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        z-index: 1;
+        text-shadow: -0.25px 0px black, 0px 0.25px black, 0.25px 0px black, 0px -0.25px black;
+    }
+    * {margin:0;padding:0;}
+    .section{
+        background-color: white;
+        border-radius: 30px;
+        display: flex;
+        align-content: center;
+        margin: auto;
+        margin-top: 20vb;
+        width: 1067px;
+    }
+	.section input[id*="slide"] {display:none;}
+	.section .slidewrap {max-width:867px;margin:0 auto;}
+	.section .slidelist {white-space:nowrap;font-size:0;overflow:hidden;position:relative;}
+	.section .slidelist > li {display:inline-block;vertical-align:middle;width:100%;transition:all .5s;}
+	.section .slidelist > li > a {display:block;position:relative;}
+	.section .slidelist > li > a img {width:100%;}
+	.section .slidelist label {position:absolute;z-index:10;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
+	.section .slidelist .textbox {
+        font-family: 'intelone-mono-font-family-regular';
+        padding-top: 100px;
+        padding-right: 100px;
+        margin-right: 100px;
+        padding-bottom: 100px;
+        width: 100%;
+        height: 100%;
+    }
+    .section .slidelist .textbox h1 {font-size:28px;color:#999;;transform:translateY(30px);transition:all .5s;}
+	.section .slidelist .textbox h3 {font-size:24px;color:#000;;transform:translateY(30px);transition:all .5s; margin-top: 20px;}
+	.section .slidelist .textbox p {font-size:16px;color:#000;opacity:0;transform:translateY(30px);transition:all .5s; margin-left: 20px; margin-top: 10px;}
+	
+	/* input에 체크되면 슬라이드 효과 */
+	.section input[id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}
+	.section input[id="slide02"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-100%);}
+
+	/* input에 체크되면 텍스트 효과 */
+    .section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox h1 {opacity:1;transform:translateY(0);transition-delay:.1s;}
+	.section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+	.section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+    .section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox h1 {opacity:1;transform:translateY(0);transition-delay:.1s;}
+	.section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+	.section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+
+	/* 좌,우 슬라이드 버튼 */
+	.slide-control > div {display:none;}
+	.section .left {left:30px;background:url('./img/left.png') center center / 100% no-repeat;}
+	.section .right {right:30px;background:url('./img/right.png') center center / 100% no-repeat;}
+	.section input[id="slide01"]:checked ~ .slidewrap .slide-control > div:nth-child(1) {display:block;}
+	.section input[id="slide02"]:checked ~ .slidewrap .slide-control > div:nth-child(2) {display:block;}
+
+	/* 페이징 */
+	.slide-pagelist {text-align:center;padding:20px;}
+	.slide-pagelist > li {display:inline-block;vertical-align:middle;}
+	.slide-pagelist > li > label {display:block;padding:8px 30px;border-radius:30px;background:#ccc;margin:20px 10px;cursor:pointer;}
+	.section input[id="slide01"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(1) > label {background:#999;}
+	.section input[id="slide02"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(2) > label {background:#999;}
+</style>
+<body>
+    <header id = "header"> 
+        <nav class ="menu">
+            <ul>
+                <li><a href = "index.html">Home</a></li>
+                <li><a href = "about.html">About</a></li>
+                <li><a href = "interest.html">Interest</a></li>
+                <li><a href = "futurePlan.html">Future Plan</a></li>
+                <li><a href = "contect.html">Contect</a></li>
+            </ul>
+        </nav>
+    </header> 
+    <div class="section">
+        <input type="radio" name="slide" id="slide01" checked>
+        <input type="radio" name="slide" id="slide02">
+        <div class="slidewrap">
+            
+            <ul class="slidelist">
+                <!-- 슬라이드 영역 -->
+                <li class="slideitem">
+                    <a>
+                        <div class="textbox">
+                            <h1>관심기술</h1>
+                            <h3>필수 기술</h3>
+                            <p>HTML/CSS: 웹 페이지의 구조와 스타일 정의
+                                <br>JavaScript: 웹 페이지 동작 구현에 사용
+                            </p>
+                            <h3>프레임워크 및 라이브러리</h3>
+                            <p>React: 사용자 인터페이스를 구축
+                                <br>Angular: 복잡한 웹 애플리케이션을 구축하는 데 유용한 프레임워크
+                                <br>Vue.js: 점진적으로 적용 가능한 UI 프레임워크
+                            </p>
+                            <h3>스타일링 도구</h3>
+                            <p>
+                                Sass/SCSS: CSS 전처리기로, 더 복잡하고 유지 보수하기 쉬운 스타일 작성에 사용
+                                <br>Tailwind CSS: 유틸리티 우선 CSS 프레임워크
+                            </p>
+                            <h3>상태 관리</h3>
+                            <p>
+                                Redux: 애플리케이션의 상태를 중앙에서 관리하기 위한 도구
+                                <br>Context API (React): React 애플리케이션에서 전역 상태를 관리하는 데 사용
+                            </p>
+                            <h3>빌드 도구</h3>
+                            <p>
+                                Webpack: 모듈 번들러로, 여러 파일을 하나의 파일로 번들링하는 데 사용
+                                <br>Parcel: 설정이 적고 사용하기 쉬운 빌드 도구
+                            </p>
+                            <h3>테스트</h3>
+                            <p>
+                                Jest: JavaScript 테스팅 프레임워크로, 주로 React 애플리케이션에서 사용
+                                <br>Cypress: 엔드 투 엔드 테스트 프레임워크로, 전체 애플리케이션을 테스트
+                            </p>
+                            <h3>클라우드 및 배포</h3>
+                            <p>
+                                Netlify/Vercel: 정적 사이트를 쉽게 배포하고 관리할 수 있는 플랫폼
+                                <br>Netlify/Vercel: 정적 사이트를 쉽게 배포하고 관리할 수 있는 플랫폼
+                            </p>
+                            <h3>기타</h3>
+                            <p>
+                                TypeScript: JavaScript에 정적 타입을 추가하여 코드의 안정성과 가독성을 높임
+                                <br>GraphQL: 데이터를 요청하는 데 사용되는 쿼리 언어로, API와의 상호작용을 더 효율적으로 만듦
+                                <br>Responsive Web Design: 다양한 장치에서 잘 보이도록 웹 페이지를 디자인하는 기술
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="slideitem">
+                    <a>
+                        <div class="textbox">
+                            <h1>더 알아보고 싶은 기술들</h1>
+                            <h3>React 18:</h3><p> 성능 향상 및 사용자 경험 개선을 목표로 한 여러 기능 도입</p>
+                            <h3>Server Components:</h3> <p>서버에서 컴포넌트를 렌더링하여 클라이언트 측에서의 초기 로드 시간을 줄인다.</p>
+                            <h3>Next.js 13:</h3><p>React 기반의 프레임워크. 새로운 App Router 및 Turbopack 빌드 도구를 도입.</p>
+                            <h3>Vue 3:</h3> <p>Composition API, 더 나은 TypeScript 지원, 성능 향상 등</p>
+                            <h3>SvelteKit:</h3> <p>Svelte를 기반으로 한 애플리케이션 프레임워크.</p>
+                            <h3>Vite:</h3> <p>빠른 개발 서버와 최적화된 빌드를 제공하는 차세대 프론트엔드 빌드 도구</p>
+                            <h3>Web Components:</h3><p>다른 프레임워크와 상호 운용 가능한 독립적인 UI 구성 요소를 만들 수 있게 해준다.</p>
+                            <h3>Micro-Frontends:</h3> <p>대규모 애플리케이션을 작은 독립적인 단위로 나누어 관리하는 아키텍처</p>
+                            <h3>CSS-in-JS:</h3><p> avaScript 내에서 스타일을 관리하여 컴포넌트 기반 개발을 더 쉽게 한다.</p>
+                            <h3>WebAssembly (Wasm):</h3> <p>브라우저 내에서 고성능 애플리케이션을 실행할 수 있게 해주는 이진 포맷</p>
+                            <h3>Edge Computing:</h3> <p>클라우드 대신 사용자와 가까운 곳에서 서버를 운영</p>
+                            <h3>Jamstack:</h3> <p>JavaScript, API, 그리고 Markup을 활용하여 빠르고 안전한 웹사이트 구축</p>
+                        </div>
+                    </a>
+                </li>
+    
+                <!-- 좌,우 슬라이드 버튼 -->
+                <div class="slide-control">
+                    <div>
+                        <label for="slide02" class="left"></label>
+                        <label for="slide02" class="right"></label>
+                    </div>
+                    <div>
+                        <label for="slide01" class="left"></label>
+                        <label for="slide01" class="right"></label>
+                    </div>
+                </div>
+    
+            </ul>
+            <!-- 페이징 -->
+            <ul class="slide-pagelist">
+                <li><label for="slide01"></label></li>
+                <li><label for="slide02"></label></li>
+            </ul>
+        </div>
+    
+        
+    </div>
+</body>
+</html>
